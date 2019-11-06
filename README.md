@@ -1,6 +1,14 @@
 # Household builder
 
-## Coding
+
+## Overview
+
+Please see [demo](https://github.com/rapicastillo/cto-hhbuilder/blob/master/household-builder.gif) for a full view of features.
+
+A person should be able to add a relative and see the list as they update it. One will be able to delete and add relatives, as well as submit it to a server. In this code, the server is symbolized by printing it inside a hidden `<pre>` tag
+
+
+## Coding Notes
 
 This was coded in Javascript ES3, leveraging prototyping to define classes. All of the elements necessary for this application to work is in index.js. The Javascript is separated into three key elements:
 
@@ -8,20 +16,21 @@ This was coded in Javascript ES3, leveraging prototyping to define classes. All 
 * Household Manager
 * FormManager
 
-### Relative
+
+### Aspects 
+
+#### Relative
 
 This class manages the atomic entity of the application, the `Relative`. It stores individual information, manages its individual validity, and stores minute info about an individual
 
-### Household Manager
+#### Household Manager
 
 This entity manages the household per sé. Manages addition and deletion of the list of relatives a person has
 
-### FormManager
+#### FormManager
 
 This entity manages the elements in the context of HTML and DOM. This manages event handles, elements, rendering, etc. 
 
-
-## Coding Notes
 
 ### Prototype format
 
