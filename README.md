@@ -1,6 +1,10 @@
 # Household builder
 
 
+## Running 
+
+You should be able to run this by opening `index.html` into your preferred browser.
+
 ## Overview
 
 Please see [demo](https://github.com/rapicastillo/cto-hhbuilder/blob/master/household-builder.gif) for a full view of features.
