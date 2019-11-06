@@ -20,12 +20,15 @@ This entity manages the household per sé. Manages addition and deletion of the 
 
 This entity manages the elements in the context of HTML and DOM. This manages event handles, elements, rendering, etc. 
 
-## Prototype format
+
+## Coding Notes
+
+### Prototype format
 
 I opted for a prototype format to make the code more readable and allow for a more modular approach in handling data.
 In this scenario, the form manager sets itself to be a singleton managing instances of the household.
 
-## Use of `date.getTime` as identifier
+### Use of `date.getTime` as identifier
 
 Since  we don't have an identifier/incrementor available to manage deletion, i opted to use timestamp as our identifier. More or less it will keep the ID unique.
 
