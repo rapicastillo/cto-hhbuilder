@@ -138,10 +138,10 @@ FormManager.prototype.renderList = function() {
     var deleteButton = document.createElement("button");
     
     li.setAttribute("id", relative.id);
-    age.innerText = relative.age;
-    relationship.innerText = relative.relationship;
-    isSmoker.innerText = relative.isSmoker ? "YES" : "NO";
-    deleteButton.innerText = "DELETE"
+    age.innerText = "Age: " + relative.age + "; ";
+    relationship.innerText = "Relationship: " + relative.relationship + "; ";
+    isSmoker.innerText = "Is a smoker: " + (relative.isSmoker ? "YES" : "NO") + "  ";
+    deleteButton.innerText = "DELETE";
 
     deleteButton.onclick = this.handleDelete.bind(this);
 
