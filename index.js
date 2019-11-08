@@ -59,7 +59,7 @@ HouseholdManager.prototype.removeRelative = function(relativeId) {
 HouseholdManager.prototype.serialize = function() {
   return JSON.stringify(this.relatives.map(function(relative) {
     return {age: relative.age, relationship: relative.relationship, isSmoker: relative.isSmoker };
-  }));
+  }), null, 2);
 }
 
 /** 
@@ -68,7 +68,8 @@ HouseholdManager.prototype.serialize = function() {
 function FormManager () {
   this.addButton = document.querySelector("button.add");
   this.submitButton = document.querySelector("button[type='submit']:not(.add)");
-  
+  this.resultsArea = document.querySelector("pre.debug");
+
   //form handlers
   this.formElement = document.querySelector("form");
   this.relationshipInput = document.querySelector("form select[name=rel]");
@@ -106,7 +107,6 @@ FormManager.prototype.handleAddRelative = function(e) {
     this.addErrorMessage(e);
   } 
 
-  return false;
 }
 
 FormManager.prototype.handleDelete = function(e) {
@@ -119,6 +119,7 @@ FormManager.prototype.handleSubmit = function(e) {
   e.preventDefault();
   var serialize = this.householdManager.serialize();
   this.debugArea.innerText = serialize;
+  this.resultsArea.style.display = "block";
 }
 
 /**
