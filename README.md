@@ -41,12 +41,6 @@ This entity manages the elements in the context of HTML and DOM. This manages ev
 I opted for a prototype format to make the code more readable and allow for a more modular approach in handling data.
 In this scenario, the form manager sets itself to be a singleton managing instances of the household.
 
-### Use of `date.getTime` as identifier
-
-Since  we don't have an identifier/incrementor available to manage deletion, i opted to use timestamp as our identifier. More or less it will keep the ID unique.
-
-Because of this, I had to remove the temporary identifier upon submission so that the only elements being submitted are the age, relationship, and if the relative is a smoker.
-
 
 # About the Task
 

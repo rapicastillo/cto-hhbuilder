@@ -1,9 +1,9 @@
+
 /**
  * class Relative 
  * JSClass to encapsulate relative information
  */
 function Relative(age, relationship, isSmoker) {
-  this.id = (new Date()).getTime(); // Using Timestamp as ID for uniqueness
   this.age = age;
   this.relationship = relationship;
   this.isSmoker = isSmoker;
@@ -48,18 +48,12 @@ HouseholdManager.prototype.addRelative = function(relative) {
   this.relatives.push(relative);
 };
 
-HouseholdManager.prototype.removeRelative = function(relativeId) {
-  var index = this.relatives.findIndex(function(relative) {
-    return relative.id === relativeId;
-  });
-
+HouseholdManager.prototype.removeRelative = function(index) {
   this.relatives.splice(index, 1);
 };
 
 HouseholdManager.prototype.serialize = function() {
-  return JSON.stringify(this.relatives.map(function(relative) {
-    return {age: relative.age, relationship: relative.relationship, isSmoker: relative.isSmoker };
-  }), null, 2);
+  return JSON.stringify(this.relatives);
 }
 
 /** 
@@ -110,8 +104,8 @@ FormManager.prototype.handleAddRelative = function(e) {
 }
 
 FormManager.prototype.handleDelete = function(e) {
-  var id = e.target.parentElement.getAttribute("id");
-  this.householdManager.removeRelative(parseInt(id));
+  var index = e.target.getAttribute("data-index");
+  this.householdManager.removeRelative(parseInt(index));
   this.renderList();
 }
 
@@ -138,20 +132,20 @@ FormManager.prototype.renderList = function() {
     var isSmoker = document.createElement("span");
     var deleteButton = document.createElement("button");
     
-    li.setAttribute("id", relative.id);
     age.innerText = "Age: " + relative.age + "; ";
     relationship.innerText = "Relationship: " + relative.relationship + "; ";
     isSmoker.innerText = "Is a smoker: " + (relative.isSmoker ? "YES" : "NO") + "  ";
     deleteButton.innerText = "DELETE";
+    deleteButton.setAttribute("data-index", i);
 
     deleteButton.onclick = this.handleDelete.bind(this);
 
-    li.append(age);
-    li.append(relationship);
-    li.append(isSmoker);
-    li.append(deleteButton);
+    li.appendChild(age);
+    li.appendChild(relationship);
+    li.appendChild(isSmoker);
+    li.appendChild(deleteButton);
 
-    this.householdList.append(li);
+    this.householdList.appendChild(li);
   }
 }
 
@@ -166,7 +160,7 @@ FormManager.prototype.removeErrorMessage = function() {
 }
 
 FormManager.prototype.addErrorMessage = function (e) {
-  this.errorList.innerHTML = "Error: " + e.errors.join("; ");
+  this.errorList.innerHTML = "Error: " + e;
 }
 
 FormManager.prototype.initializeEvents = function() {
