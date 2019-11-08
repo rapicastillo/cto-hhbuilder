@@ -3,7 +3,6 @@
  * JSClass to encapsulate relative information
  */
 function Relative(age, relationship, isSmoker) {
-  this.id = (new Date()).getTime(); // Using Timestamp as ID for uniqueness
   this.age = age;
   this.relationship = relationship;
   this.isSmoker = isSmoker;
@@ -53,9 +52,7 @@ HouseholdManager.prototype.removeRelative = function(index) {
 };
 
 HouseholdManager.prototype.serialize = function() {
-  return JSON.stringify(this.relatives.map(function(relative) {
-    return {age: relative.age, relationship: relative.relationship, isSmoker: relative.isSmoker };
-  }));
+  return JSON.stringify(this.relatives);
 }
 
 /** 
@@ -132,7 +129,6 @@ FormManager.prototype.renderList = function() {
     var isSmoker = document.createElement("span");
     var deleteButton = document.createElement("button");
     
-    li.setAttribute("id", relative.id);
     age.innerText = "Age: " + relative.age + "; ";
     relationship.innerText = "Relationship: " + relative.relationship + "; ";
     isSmoker.innerText = "Is a smoker: " + (relative.isSmoker ? "YES" : "NO") + "  ";
