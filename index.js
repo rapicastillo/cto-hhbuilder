@@ -1,3 +1,16 @@
+if (!Array.prototype.findIndex) {
+  Array.prototype.findIndex = function(arr, fn) {
+    return arr.reduce(function(carry, item, idx) {
+        if(fn(item, idx)) {
+            return idx;
+        }
+  
+        return carry;
+    } , -1);
+  };
+}
+
+
 /**
  * class Relative 
  * JSClass to encapsulate relative information
@@ -146,12 +159,12 @@ FormManager.prototype.renderList = function() {
 
     deleteButton.onclick = this.handleDelete.bind(this);
 
-    li.append(age);
-    li.append(relationship);
-    li.append(isSmoker);
-    li.append(deleteButton);
+    li.appendChild(age);
+    li.appendChild(relationship);
+    li.appendChild(isSmoker);
+    li.appendChild(deleteButton);
 
-    this.householdList.append(li);
+    this.householdList.appendChild(li);
   }
 }
 
@@ -166,7 +179,8 @@ FormManager.prototype.removeErrorMessage = function() {
 }
 
 FormManager.prototype.addErrorMessage = function (e) {
-  this.errorList.innerHTML = "Error: " + e.errors.join("; ");
+  console.log(e);
+  this.errorList.innerHTML = "Error: " + e;
 }
 
 FormManager.prototype.initializeEvents = function() {
