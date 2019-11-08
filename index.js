@@ -160,7 +160,6 @@ FormManager.prototype.removeErrorMessage = function() {
 }
 
 FormManager.prototype.addErrorMessage = function (e) {
-  console.log(e);
   this.errorList.innerHTML = "Error: " + e;
 }
 
