@@ -1,15 +1,3 @@
-if (!Array.prototype.findIndex) {
-  Array.prototype.findIndex = function(arr, fn) {
-    return arr.reduce(function(carry, item, idx) {
-        if(fn(item, idx)) {
-            return idx;
-        }
-  
-        return carry;
-    } , -1);
-  };
-}
-
 
 /**
  * class Relative 
